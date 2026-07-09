@@ -1,13 +1,17 @@
 name: Sync LeetCode Submissions
 
 on:
-  workflow_dispatch: # Allows you to run this manually at any time
+  workflow_dispatch: 
   schedule:
-    - cron: '0 0 * * *' # Runs automatically every single day at midnight UTC
+    - cron: '0 0 * * *' 
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    # This bypasses the Node deprecation strict warnings
+    env:
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     steps:
       - name: Fetch and Sync Code
@@ -17,5 +21,3 @@ jobs:
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           destination-folder: leetcode-solutions
-          verbose: true
-          commit-header: '[LeetCode Sync]'
