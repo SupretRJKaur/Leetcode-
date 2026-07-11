@@ -5,4 +5,7 @@ class Solution(object):
             s = s.replace("[]", "")
             s = s.replace("{}", "")
             
-        return s == ""
+        if s == "":
+            return True
+        else:
+            return False
