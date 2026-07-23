@@ -21,8 +21,6 @@ class Solution(object):
                         stack.append(-(-prev // j))
                     else:
                         stack.append(prev // j)
-                
                 i = char
                 j = 0
-                
         return sum(stack)
