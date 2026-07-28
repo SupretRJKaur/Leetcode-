@@ -18,9 +18,9 @@ class Solution(object):
 
         while i < j:
             nodes[i].next = nodes[j]
-            i += 1
+            i = i + 1
             if i >= j:
                 break
             nodes[j].next = nodes[i]
-            j -= 1
+            j = j-1
         nodes[i].next = None
