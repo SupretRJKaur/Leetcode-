@@ -6,6 +6,8 @@
 class Solution(object):
 
     def reorderList(self, head):
+        if not head:
+            return
         nodes = []
         curr = head
         while curr:
