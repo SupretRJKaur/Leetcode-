@@ -5,19 +5,12 @@
 #         self.next = None
 
 class Solution(object):
-
     def hasCycle(self, head):
-        slow = head
-        fast = head
-
-        # Keep running as long as fast pointer and its next node exist
-        while fast and fast.next:
-            slow = slow.next  # Move 1 step
-            fast = fast.next.next  # Move 2 steps
-
-            # If they meet at the exact same node, there's a cycle!
-            if slow == fast:
+        visited= set()
+        curr=head
+        while curr:
+            if curr in visited:
                 return True
-
-        # If fast reaches the end (None), there's no cycle
+            visited.add(curr)
+            curr= curr.next
         return False
