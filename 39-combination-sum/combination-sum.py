@@ -1,18 +1,18 @@
 class Solution(object):
 
     def combinationSum(self, candidates, target):
+        candidates.sort()
         res = []
-
-        def dfs(i, t, p):
-            if t == 0:
-                res.append(list(p))
+        def backtrack(start, remaining_target, path):
+            if remaining_target == 0:
+                res.append(list(path))
                 return
-            if i >= len(candidates) or t < 0:
-                return
-            p.append(candidates[i])
-            dfs(i, t - candidates[i], p)
-            p.pop()
-            dfs(i + 1, t, p)
-
-        dfs(0, target, [])
+            for i in range(start, len(candidates)):
+                num = candidates[i]
+                if num > remaining_target:
+                    break
+                path.append(num)
+                backtrack(i, remaining_target - num, path)
+                path.pop()
+        backtrack(0, target, [])
         return res
